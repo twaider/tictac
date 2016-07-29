@@ -1,0 +1,54 @@
+{
+  "name": "tictac",
+  "author": "twaider",
+  "version": "1.0.0",
+  "keywords": [
+    "spiral",
+    "circle",
+    "watchface",
+    "circles",
+    "watch"
+  ],
+  "private": true,
+  "dependencies": {
+    "pebble-clay": "^1.0.1"
+  },
+  "scripts": {
+    "emulator": "pebble build && pebble install --emulator basalt",
+    "config": "pebble emu-app-config",
+    "clean": "pebble clean",
+    "logs": "pebble logs",
+    "cloudpebble": "pebble build && pebble install --cloudpebble"
+  },
+  "pebble": {
+    "capabilities": [
+      "location",
+      "configurable"
+    ],
+    "displayName": "tictac",
+    "uuid": "9dde0198-2fd2-4501-82cd-748d910c163c",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "TEMPERATURE",
+      "UNITS",
+      "ICON",
+      "BACKGROUND_COLOR",
+      "WEATHER_ON",
+      "BACKGROUND_ON",
+      "LOCATION",
+      "WEATHER_SAFEMODE"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}
