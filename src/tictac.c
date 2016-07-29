@@ -38,7 +38,7 @@ static void inbox_received_callback(DictionaryIterator *iterator,
   if (background_color_tuple && background_on_tuple) {
     // Set background on/off
     background_on_conf = (bool)background_on_tuple->value->int16;
-    persist_write_bool(MESSAGE_KEY_BACKGROUND_ON, back‡ground_on_conf);
+    persist_write_bool(MESSAGE_KEY_BACKGROUND_ON, background_on_conf);
     // Set background color if enabled, otherwise we load the default one - red
     background_color = (int)background_color_tuple->value->int32;
     persist_write_int(MESSAGE_KEY_BACKGROUND_COLOR, background_color);
