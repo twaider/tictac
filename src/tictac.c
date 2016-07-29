@@ -40,10 +40,12 @@ static void inbox_received_callback(DictionaryIterator *iterator,
     background_on_conf = (bool)background_on_tuple->value->int16;
     persist_write_bool(MESSAGE_KEY_BACKGROUND_ON, background_on_conf);
     // Set background color if enabled, otherwise we load the default one - red
-    background_color = (int)background_color_tuple->value->int32;
+    background_color = background_on_conf
+                           ? (int)background_color_tuple->value->int32
+                           : 0x0055FF;
     persist_write_int(MESSAGE_KEY_BACKGROUND_COLOR, background_color);
   }
-
+  
   // Redraw
   if (s_canvas_layer) {
     layer_mark_dirty(s_canvas_layer);
@@ -94,8 +96,8 @@ static void update_proc(Layer *layer, GContext *ctx) {
   // the 12 dot
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_context_set_stroke_color(ctx, GColorBlack);
-  graphics_fill_circle(ctx, GPoint(bounds.size.w / 2, 20), 6);
-  graphics_draw_circle(ctx, GPoint(bounds.size.w / 2, 20), 6);
+  graphics_fill_circle(ctx, GPoint(bounds.size.w / 2, 12), 6);
+  graphics_draw_circle(ctx, GPoint(bounds.size.w / 2, 12), 6);
 
   // Don't use current time while animating
   Time mode_time = (s_animating) ? s_anim_time : s_last_time;
